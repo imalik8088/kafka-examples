@@ -1,0 +1,11 @@
+{"namespace": "schema",
+  "type": "record",
+  "name": "OneMessageValue",
+  "fields": [
+    {"name": "ip", "type": "string", "doc" : "The IP Address"},
+    {"name": "timestamp",  "type": "long"},
+    {"name": "url",  "type": "string"},
+    {"name": "useragent",  "type": "string"},
+    {"name": "sessionid",  "type": ["null","int"], "default": null}
+  ]
+}

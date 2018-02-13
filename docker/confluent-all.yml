@@ -6,6 +6,7 @@ services:
     container_name: zookeeper_example
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_JMX_PORT: 9585
       zk_id: "1"
 
   kafka:
@@ -23,6 +24,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_DELETE_TOPIC_ENABLE: "true"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_JMX_PORT: 9581
 
   schema-registry:
     image: confluentinc/cp-schema-registry:4.0.0-2
@@ -36,6 +38,8 @@ services:
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry
+      SCHEMA_REGISTRY_JMX_PORT: 9582
+
 
   rest-proxy:
     image: confluentinc/cp-kafka-rest:4.0.0-2
@@ -50,7 +54,7 @@ services:
       KAFKA_REST_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_REST_ID: 12345
       KAFKA_REST_HOST_NAME: restproxy
-      KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema_registry:8081'
+      KAFKA_REST_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
 
   kafka-connect:
     image: confluentinc/cp-kafka-connect:4.0.0-2
@@ -75,9 +79,10 @@ services:
       CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
       CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schema_registry:8081'
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schema_registry:8081'
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_PLUGIN_PATH: "/usr/share/java/:/etc/kafka-connect/jars"
+      CONNECT_JMX_PORT: 9584
