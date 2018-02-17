@@ -8,14 +8,13 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 
 import java.util.Properties;
-import java.util.UUID;
 
-public class SimpleStreams {
+public class SimpleKStream {
 
     public static void main(String[] args) {
 
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, UUID.randomUUID().toString());
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "lab_simple_kstreams");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaProperties.KAFKA_SERVER_URL);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
