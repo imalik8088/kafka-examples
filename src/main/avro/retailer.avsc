@@ -1,0 +1,10 @@
+{"namespace": "schema",
+  "type": "record",
+  "name": "Retailer",
+  "fields": [
+    { "name": "retailerId",  "type": "int" },
+    { "name": "name",        "type": "string", "doc": "Name of retailer" },
+    { "name": "retailPrice", "type": "double" },
+    { "name": "location",    "type": ["null","string"], "default": "China"}
+  ]
+}

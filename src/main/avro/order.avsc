@@ -1,0 +1,10 @@
+{"namespace": "schema",
+  "type": "record",
+  "name": "Order",
+  "fields": [
+    { "name": "orderId",     "type": "string", "doc" : "Unique (UUID) id for one order" },
+    { "name": "retailerId",  "type": "int" },
+    { "name": "quantity",    "type": "int" },
+    { "name": "product",     "type": "string" }
+  ]
+}
