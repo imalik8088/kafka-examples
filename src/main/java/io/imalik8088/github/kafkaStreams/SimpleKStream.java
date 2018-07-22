@@ -1,4 +1,4 @@
-package io.imalik8088.github.KafkaStreams;
+package io.imalik8088.github.kafkaStreams;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;

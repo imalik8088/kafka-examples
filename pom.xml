@@ -138,6 +138,13 @@
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
+<!-- TopologyTestDriver -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams-test-utils</artifactId>
+            <version>1.1.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

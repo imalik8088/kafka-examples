@@ -1,16 +1,13 @@
-package io.imalik8088.github.KafkaStreams;
+package io.imalik8088.github.kafkaStreams;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
-import org.rocksdb.IngestExternalFileOptions;
 
 import java.util.Properties;
-import java.util.UUID;
 
 public class SimpleKTable {
 

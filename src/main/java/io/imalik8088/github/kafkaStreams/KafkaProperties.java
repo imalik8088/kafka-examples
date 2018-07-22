@@ -1,4 +1,4 @@
-package io.imalik8088.github.KafkaStreams;
+package io.imalik8088.github.kafkaStreams;
 
 public class KafkaProperties {
     public static final String KAFKA_SERVER_URL = "192.168.99.100:9092";

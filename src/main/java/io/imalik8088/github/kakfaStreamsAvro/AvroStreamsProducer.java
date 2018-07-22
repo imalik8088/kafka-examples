@@ -1,8 +1,7 @@
-package io.imalik8088.github.windowing;
+package io.imalik8088.github.kakfaStreamsAvro;
 
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.*;
-import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import schema.OneMessageValue;
 

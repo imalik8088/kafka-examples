@@ -1,36 +1,38 @@
-version: "2"
-services:
+version: '2'
 
+services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:4.0.0-2
+    image: confluentinc/cp-zookeeper:4.1.1
+    hostname: zookeeper
     container_name: zookeeper_example
+    ports:
+      - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_JMX_PORT: 9585
-      zk_id: "1"
 
   kafka:
-    image: confluentinc/cp-kafka:4.0.0-2
+    image: confluentinc/cp-kafka:4.1.1
     container_name: kafka_example
     hostname: kafka
-    links:
+    depends_on:
       - zookeeper
     ports:
       - "9092:9092"
     environment:
+      # add the entry "127.0.0.1    kafka" to your /etc/hosts file
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092"
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
-      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://192.168.99.100:9092"
-      KAFKA_LOG4J_LOGGERS: "kafka.authorizer.logger=WARN"
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=WARN,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=WARN"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_DELETE_TOPIC_ENABLE: "true"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      KAFKA_JMX_PORT: 9581
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
 
   schema-registry:
-    image: confluentinc/cp-schema-registry:4.0.0-2
+    image: confluentinc/cp-schema-registry:4.1.1
     container_name: schema_registry_example
     hostname: schema_registry
-    links:
+    depends_on:
       - kafka
       - zookeeper
     ports:
@@ -38,4 +40,3 @@ services:
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry
-      SCHEMA_REGISTRY_JMX_PORT: 9582
