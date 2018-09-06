@@ -7,7 +7,6 @@ services:
     ports:
     - "8001:8000"
     environment:
-#      SCHEMAREGISTRY_URL: "http://schema-registry.dev.aareality.aareal.org"
       SCHEMAREGISTRY_URL: "http://192.168.99.100:8081"
       PROXY: "true"
 
@@ -17,7 +16,6 @@ services:
     ports:
     - "8002:8000"
     environment:
-#      KAFKA_REST_PROXY_URL: "http://rest-proxy.dev.aareality.aareal.org"
       KAFKA_REST_PROXY_URL: "http://192.168.99.100:8082"
       PROXY: "true"
 
@@ -27,6 +25,5 @@ services:
     ports:
     - "8003:8000"
     environment:
-#      CONNECT_URL: "http://kafka-connect.dev.aareality.aareal.org"
       CONNECT_URL: "http://192.168.99.100:8083"
       PROXY: "true"
